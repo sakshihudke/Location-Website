@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:centre;">
+    <h2>HOW TO GET USER LOCATION WITH <br> HTML GEOLOCATION API</h2>
+    <button onclick="getuserlocation()">Get User Location</button>
+    <p id="res"></p>
+    <script>
+        var res = document.getElementById("res");
+        function getuserlocation(){
+            if(navigator.geolocation) navigator.geolocation.getCurrentPosition(success, error);
+            else res.innerHTML = "Geolocation is not supported by this browser";
+        }
+        function error(error){
+            res.innerHTML = "Error <br> Code =>" + eror.code + "<br>" + "Message => " + error.message;
+        }
+        function success(position){
+            var coords = position.coords;
+            //Always retured
+            txt = txt = " latitude : " + coords.latitude + "<br>";
+            txt = txt = " logitude : " + coords.logitude + "<br>";
+            txt = txt + " accuracy : " + coords.accuracy + "<br>";
+            //Returned omly if availabe
+            txt = txt + " altitude: "+ coords.altitude + "<br>";
+            txt = txt + " altitude: " + coords.altitudeAccuracy + "<br>";
+            txt = txt + " heading: " + coords.heading + "<br>";
+            txt = txt + " speed: " + coords.speed + "<br>";
+            txt =txt + " timestamp : " + coords.timestamp + "<br>";
+            res.innerHTML = txt;
+        }
+    </script> 
+</body>
+</html>
